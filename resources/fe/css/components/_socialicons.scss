@@ -1,0 +1,60 @@
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+
+    > a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        color: var(--bs-dark);
+        font-size:14px;
+        background-color: var(--bs-light);
+
+        &.instagram:hover {
+            background-color: #405de6;
+        }
+
+        &.facebook:hover {
+            background-color: #1877f2;
+        }
+
+        &.twitter-x:hover {
+            background-color: #55acee;
+        }
+
+        &.whatsapp:hover {
+            background-color: #25d366;
+        }
+
+        &.telegram:hover {
+            background-color: #0088cc;
+        }
+
+        &.spotify:hover {
+            background-color: #1db954;
+        }
+
+        &.tiktok:hover {
+            background-color: #010101; /* Ana renk */
+        }
+
+        &.linkedin:hover {
+            background-color: #0077b5;
+        }
+
+        &.youtube:hover {
+            background-color: #ff0000;
+        }
+    }
+
+    &.dark {
+        > a {
+            color: var(--bs-light);
+            background-color: var(--bs-dark);
+        }
+    }
+}

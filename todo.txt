@@ -1,0 +1,26 @@
+* Topbar Inquire yanına dil bayrakları eklenecek
+* Menülerdeki font Montserrat olarak değişecek.
+* Topbarda telefona tıklanınca whatsapp, adrese tıklanınca mapse gidecek
+* Menü Mega menü olacak tedavilere gelince kategoriler, kategorilerin üzerine gelince yanda mega olarak tedaviler sıralanacak
+* Açılır menüdeki başlıkların altında ince bir çizgi olacak her birini birbirinden ayıran.
+* Açılır mega menünün rengi farklı olacak ana menü gibi siyah olmayacak.
+* Hakkımızda sayfasında yer alan logoların çözünürlükleri artırılacak.
+* Sayfaların en altında bulunan İnfo başlığı altındaki telefon ve maps alanında şunlar olacak; Başlık Contact Us olacak, soldaki telefon whatsapp ve e-mailin etrafındaki kutucuklar kalkacak, arkaplandaki mavi gri tonlarında olacak.
+- Patient Journey sayfası https://clinichub.com/en/pre-op-guide/ bu sayfadaki tasarım gibi olacak tamamen.
+- İletişim sayfasındaki formun arkaplanı beyaz değil farklı bir renk olacak daha dikkat çekici olması için.
+* 9906 kodlu fotoğraf slider alanına, 8887 kodlu fotoğraf hakkımda alanına gelecek.
+* Slider alanında fotoğrafın altında veya yanında Board Certification vurgusu olacak.
+* Healtripteki sertifikalar hakkımda kısmına çekilecek. https://www.healtripglobal.com/tr/doktorlarimiz/opdr-caner-kacmaz
+* Tedavi detay sayfasında Inquire butonunun rengi ve tasarımı değişecek daha ilgi çekici olacak.
+* Tedavi detay sayfasındaki sağ taraftaki hasta kartı  daha renkli olacak  https://www.healtripglobal.com/treatment-details/piezo-rhinoplasty  sayfa aşağı kaydıkça sticky olarak kayacak.
+* Anasayfadaki founder of healtrip kalkacak
+
+
+
+
+https://drcaner.projeweb.site/login?redirect=
+superadmin@projemed.com
+!Prjmd2025!
+
+DB_USERNAME=projeweb_drcaner
+DB_PASSWORD=7Is.2)^b92o91Ftr

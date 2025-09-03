@@ -1,0 +1,231 @@
+.cs-navbar {
+    transition: all 0.3s ease;
+    z-index: 1030 !important;
+}
+
+#main-navbar {
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+    background-color: $black;
+    border-top:2px solid #3E3E3E;
+}
+
+#main-mobile-navbar {
+    transition: all 0.2s ease-in;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+    background-color: $black;
+}
+
+body {
+    &.sticky {
+        #main-navbar {
+            position: fixed !important;
+        }
+        #main-mobile-navbar {
+            position: fixed !important;
+        }
+    }
+}
+
+//mobilde responsive size iptal edelim
+#csNavbar {
+    .main-level {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .cs-navbar {
+        padding: 0;
+    }
+    .cs-navbar .cs-navbar-toggle {
+        width: 4.25rem;
+    }
+}
+.cs-navbar .navbar-toggler {
+    border: 0;
+    color: $light;
+}
+.cs-navbar .navbar-toggler .bi {
+    width: 35px;
+    height: 35px;
+    color: $light;
+}
+.cs-navbar .navbar-toggler:focus {
+    box-shadow: none;
+}
+.cs-navbar .navbar-brand {
+    transition: 0.2s ease-in-out transform;
+    @media (max-width: 991.98px) {
+        max-width: 140px;
+    }
+}
+
+.cs-navbar .nav-link {
+    --bs-nav-link-padding-x: 0.75rem;
+    --bs-nav-link-padding-y: 1.5rem;
+    --bs-nav-link-font-weight: 600;
+    --bs-nav-link-color: var(--bs-white);
+    --bs-nav-link-hover-color: var(--bs-light);
+
+    font-size: clamp(0.9rem, 1.1vw, 0.95rem);
+    position: relative;
+    text-transform: uppercase;
+    font-family: $headings-font-family;
+
+    &:hover {
+        background-color: $gray-800;
+    }
+
+}
+
+.cs-navbar .navbar-nav-svg {
+    display: inline-block;
+    vertical-align: -0.125rem;
+}
+.cs-navbar .offcanvas-lg {
+    background-color: $white;
+    border-left: 0;
+}
+@media (max-width: 991.98px) {
+    .cs-navbar .offcanvas-lg {
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+    }
+}
+
+.cs-navbar {
+    .dropdown-toggle {
+        &::after {
+            border: none !important;
+            width: 0.75rem;
+            height: 0.75rem;
+            margin-left: 0.5rem;
+            content: "";
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='7' height='5' viewBox='0 0 7 5' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M3.49268 4.71875L0.8946 0.21875L6.09075 0.21875L3.49268 4.71875Z' fill='white'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center right;
+            transition: transform 0.2s ease-in-out;
+            vertical-align: unset;
+        }
+
+        &.show::after {
+            transform: rotate(-180deg);
+        }
+
+        &:focus:not(:focus-visible) {
+            outline: 0;
+        }
+    }
+}
+
+.cs-navbar .dropdown-menu {
+    --bs-dropdown-bg: transparent;
+    --bs-dropdown-padding-y: 0;
+    --bs-dropdown-border-radius: 0;
+    --bs-dropdown-min-width: 12rem;
+    --bs-dropdown-font-size: 0.875rem;
+    --bs-dropdown-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    --bs-dropdown-min-width: 200px;
+    --bs-dropdown-border-width: 0;
+    --bs-dropdown-item-padding-x: 1.25rem;
+    --bs-dropdown-item-padding-y: .5rem;
+    --bs-dropdown-link-color: var(--bs-light);
+    --bs-dropdown-link-hover-bg: var(--bs-light);
+    --bs-dropdown-link-active-bg: var(--bs-light);
+
+    overflow: hidden;
+    box-shadow: none;
+    margin-top: -1px !important;
+    top: auto !important;
+    //opacity: 0;
+
+    li {
+        overflow: hidden;
+    }
+
+    .dropdown-item {
+        white-space: unset;
+        font-weight: 500;
+        background-color: black;
+        color:$light;
+        font-family: $headings-font-family;
+        text-transform: uppercase;
+        &:hover,
+        &.active {
+            background-color: $gray-800;
+        }
+    }
+}
+
+.cs-navbar .dropdown-item.current {
+    font-weight: 600;
+}
+
+@media (min-width: 992px) {
+    .cs-navbar {
+        .dropdown {
+            &:hover {
+                .dropdown-toggle {
+                    &::after {
+                        transform: rotate(-180deg);
+                    }
+                }
+
+                > .dropdown-menu {
+                    display: block;
+                }
+            }
+        }
+
+        .mega-submenu {
+            left: 100%;
+            top: 0;
+            min-width: 25rem;
+        }
+
+        .ktm-mega-menu {
+            position: static;
+        }
+
+        .mega-menu {
+            left: 0;
+            right: 0;
+            width: 100%;
+            background-color: unset;
+            border: none;
+            box-shadow: unset;
+            //padding: 1rem 0;
+        }
+
+        .dropdown-menu {
+            li {
+                position: relative;
+
+                .submenu {
+                    display: none;
+                    left: 100%;
+                    top: 0;
+                }
+
+                &:hover {
+                    .submenu {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+}
