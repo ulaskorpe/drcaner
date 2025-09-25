@@ -1,23 +1,34 @@
-* Topbar Inquire yanına dil bayrakları eklenecek
-* Menülerdeki font Montserrat olarak değişecek.
-* Topbarda telefona tıklanınca whatsapp, adrese tıklanınca mapse gidecek
+* Topbar Inquire yanına dil bayrakları eklenecek+++
+* Menülerdeki font Montserrat olarak değişecek.+++
+* Topbarda telefona tıklanınca whatsapp, adrese tıklanınca mapse gidecek++
+* Açılır menüdeki başlıkların altında ince bir çizgi olacak her birini birbirinden ayıran.++
+* Sayfaların en altında bulunan İnfo başlığı altındaki telefon ve maps alanında şunlar olacak; Başlık Contact Us olacak, soldaki telefon whatsapp ve e-mailin etrafındaki kutucuklar kalkacak, arkaplandaki mavi gri tonlarında olacak.
+- İletişim sayfasındaki formun arkaplanı beyaz değil farklı bir renk olacak daha dikkat çekici olması için.
+* Anasayfadaki founder of healtrip kalkacak
+* Slider alanında fotoğrafın altında veya yanında Board Certification vurgusu olacak.
+* ??9906 kodlu fotoğraf slider alanına, 8887 kodlu fotoğraf hakkımda alanına gelecek.
+
+
 * Menü Mega menü olacak tedavilere gelince kategoriler, kategorilerin üzerine gelince yanda mega olarak tedaviler sıralanacak
-* Açılır menüdeki başlıkların altında ince bir çizgi olacak her birini birbirinden ayıran.
 * Açılır mega menünün rengi farklı olacak ana menü gibi siyah olmayacak.
 * Hakkımızda sayfasında yer alan logoların çözünürlükleri artırılacak.
-* Sayfaların en altında bulunan İnfo başlığı altındaki telefon ve maps alanında şunlar olacak; Başlık Contact Us olacak, soldaki telefon whatsapp ve e-mailin etrafındaki kutucuklar kalkacak, arkaplandaki mavi gri tonlarında olacak.
 - Patient Journey sayfası https://clinichub.com/en/pre-op-guide/ bu sayfadaki tasarım gibi olacak tamamen.
-- İletişim sayfasındaki formun arkaplanı beyaz değil farklı bir renk olacak daha dikkat çekici olması için.
-* 9906 kodlu fotoğraf slider alanına, 8887 kodlu fotoğraf hakkımda alanına gelecek.
-* Slider alanında fotoğrafın altında veya yanında Board Certification vurgusu olacak.
+
+
+
+
+ABOUT DR CANER
+
+w-75 border-top border-bottom border-3 border-white text-white px-1 pt-4 pb-3 mb-5 lh-1
+
 * Healtripteki sertifikalar hakkımda kısmına çekilecek. https://www.healtripglobal.com/tr/doktorlarimiz/opdr-caner-kacmaz
-* Tedavi detay sayfasında Inquire butonunun rengi ve tasarımı değişecek daha ilgi çekici olacak.
+* ı değTedavi detay sayfasında Inquire butonunun rengi ve tasarımişecek daha ilgi çekici olacak.
 * Tedavi detay sayfasındaki sağ taraftaki hasta kartı  daha renkli olacak  https://www.healtripglobal.com/treatment-details/piezo-rhinoplasty  sayfa aşağı kaydıkça sticky olarak kayacak.
-* Anasayfadaki founder of healtrip kalkacak
 
+bi
 
-
-
+ top-50 end-0 translate-middle-y
+p-3  position-fixed  top-50
 https://drcaner.projeweb.site/login?redirect=
 superadmin@projemed.com
 !Prjmd2025!

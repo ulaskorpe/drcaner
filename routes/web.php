@@ -16,6 +16,10 @@ use App\Http\Controllers\ProfileController;
 */
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('fehome');
+
+Route::get('/contact-form', [App\Http\Controllers\HomeController::class, 'contactForm'])->name('contact-form');
+Route::post('/contact-form', [App\Http\Controllers\HomeController::class, 'contactFormPost'])->name('contact-form-post');
+
 Route::post('/submit-form/{form}', [App\Http\Controllers\HomeController::class, 'formSubmit'])->middleware(ProtectAgainstSpam::class)->name('form.submit');
 Route::middleware('doNotCacheResponse')->get('/b', [App\Http\Controllers\SearchController::class, 'blog'])->name('search.blog');
 Route::middleware('doNotCacheResponse')->get('/s', [App\Http\Controllers\SearchController::class, 'content'])->name('search.content');
@@ -37,7 +41,7 @@ Route::middleware('doNotCacheResponse')->get('robots.txt', function() {
     ];
 
     if (app()->environment() == 'production') {
-        
+
         $data = [
             'sitemaps' => [route('sitemap')],
             'disallows' => config('robots.disallows'),

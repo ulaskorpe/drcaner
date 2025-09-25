@@ -67,13 +67,89 @@
             const formSubmitFields = @json($message);
         </script>
 		@endif
-        
+
         @if ($message = Session::get('formAfterSubmit'))
         {!! $message !!}
         @endif
 
         @stack('head')
-        
+        <style>
+
+        .fixed-global {
+  position: fixed;
+  top: 100px;
+  z-index: 9999;
+}
+        .sticky-global{
+  position: fixed;
+  top: 200px;      /* ihtiyacına göre */
+     /* ihtiyacına göre */
+  z-index: 9999;
+  width: 320px;    /* sabit bir genişlik ver ya da aşağıdaki 2. yöntemi kullan */
+}
+.sticky-right {
+  top: 100px;
+
+  z-index: 99;
+}
+.fixed {
+  position: fixed;
+}
+.absolute {
+  position: absolute;
+}
+
+.custom-box {
+
+}
+
+.top-25 {
+  top:200px !important;
+}
+
+.menu-item {
+    padding: 10px 15px;       /* Menü öğesi iç boşluğu */
+    border-bottom: 1px solid #ccc;  /* İnce çizgi */
+    padding-top: 5px;
+}
+            .new-font{
+                font-family: 'Montserrat' !important;
+
+            }
+            /* Google Translate ikonunu tamamen kaldırır */
+            .goog-te-gadget-icon {
+              display: none !important;
+            }
+
+            /* Widget'ın ana container'ını şeffaf yapar ve kenarlıklarını sıfırlar */
+            .goog-te-gadget-simple {
+
+
+
+              border: none !important;
+              padding: 0 !important;
+              margin: 0 !important;
+            }
+
+            /* Seçili dili gösteren metnin rengini ayarlar */
+            /* Sitenizin arka planı koyu ise bu rengi beyaz (#FFFFFF) yapmanız gerekebilir */
+            .goog-te-gadget-simple .goog-te-menu-value span {
+
+              color: #fff !important; /* Yazı rengi SİYAH */
+              text-decoration: none !important;
+              border: none !important;
+            }
+
+            /* Dropdown oku için ek stil (opsiyonel) */
+            .goog-te-gadget-simple .goog-te-menu-value img {
+               background-image: none !important;
+            }
+
+          </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
     </head>
     <body @class(['d-flex flex-column overflow-x-hidden'])>
 
@@ -94,6 +170,8 @@
         <div class="mt-auto">
             @if ($settings->footer_layout[app()->getLocale()] && count($settings->footer_layout[app()->getLocale()]['content']) > 0)
                 @foreach ($settings->footer_layout[app()->getLocale()]['content'] as $section)
+
+
                 <x-section :section="$section"/>
                 @endforeach
             @endif
@@ -116,7 +194,20 @@
                 </div>
             </div>
         </div>
-
+<!-- Modal -->
+<div class="modal fade" id="contactModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+     >
+      <div class="modal-body" id="contactModalBody">
+        <!-- İçerik buraya yüklenecek -->
+        <div class="text-center py-5" id="contactLoading" style="display:none;">
+          Yükleniyor…
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
         {{ $footerScriptsSource ?? '' }}
 
@@ -129,6 +220,60 @@
         {{ $footerScripts ?? '' }}
 
         @stack('footer')
+
+
+            <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                    <script type="text/javascript">
+
+
+function showModal(){
+    $.get( "https://drcaner.projeweb.site/contact-form", function( data ) {
+  $( "#contactModalBody" ).html( data );
+      
+});
+}
+
+
+
+                        const sticky = document.querySelector(".custom-box");
+ //const scrollBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
+
+                   if(window.innerWidth > 1024){
+
+               window.addEventListener("scroll", () => {
+                   console.log(document.documentElement.scrollHeight);
+                 //  console.log(window.innerWidth);
+
+
+
+                                            if (window.scrollY < 500 || window.scrollY > document.documentElement.scrollHeight - 1200) {
+                              sticky.classList.remove("sticky-top" , "sticky-right", "sticky-global");
+                            } else {
+                              sticky.classList.add("sticky-top" , "sticky-right", "sticky-global");
+                            }
+
+
+  });
+
+                   }else{
+                    sticky.classList.remove("sticky-top", "sticky-column", "sticky-right", "sticky-global"); sticky.classList.add("row");
+               }
+            // function googleTranslateElementInit() {
+            //   new google.translate.TranslateElement({
+            //     pageLanguage: 'tr',
+            //     includedLanguages: 'tr,en,de',
+            //     layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            //     autoDisplay: false
+            //   }, 'google_translate_element');
+            }
+
+
+             ////
+
+
+
+
+            </script>
 
     </body>
 </html>
