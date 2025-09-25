@@ -144,11 +144,13 @@
             .goog-te-gadget-simple .goog-te-menu-value img {
                background-image: none !important;
             }
-            #main-navbar .dropdown-menu .dropdown-submenu {
+            #main-navbar .dropdown-menu .dropdown-submenu,
+            #main-navbar .dropdown-menu .dropend {
         position: relative;
     }
 
-    #main-navbar .dropdown-menu .dropdown-submenu > .dropdown-menu {
+    #main-navbar .dropdown-menu .dropdown-submenu > .dropdown-menu,
+    #main-navbar .dropdown-menu .dropend > .dropdown-menu {
         top: 0;
         left: 100%;
         margin-left: .25rem;
@@ -158,11 +160,14 @@
     }
 
     #main-navbar .dropdown-menu .dropdown-submenu:hover > .dropdown-menu,
-    #main-navbar .dropdown-menu .dropdown-submenu:focus-within > .dropdown-menu {
+    #main-navbar .dropdown-menu .dropdown-submenu:focus-within > .dropdown-menu,
+    #main-navbar .dropdown-menu .dropend:hover > .dropdown-menu,
+    #main-navbar .dropdown-menu .dropend:focus-within > .dropdown-menu {
         display: block;
     }
 
-    #main-navbar .dropdown-menu .dropdown-submenu > a {
+    #main-navbar .dropdown-menu .dropdown-submenu > a,
+    #main-navbar .dropdown-menu .dropend > a {
         white-space: normal;
     }
 
@@ -176,7 +181,8 @@
     }
 
     @media (max-width: 1199.98px) {
-        #main-navbar .dropdown-menu .dropdown-submenu > .dropdown-menu {
+        #main-navbar .dropdown-menu .dropdown-submenu > .dropdown-menu,
+        #main-navbar .dropdown-menu .dropend > .dropdown-menu {
             position: static;
             margin-left: 0;
         }

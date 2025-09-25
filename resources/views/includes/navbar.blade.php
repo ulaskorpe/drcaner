@@ -186,8 +186,20 @@
                                 <ul class="dropdown-menu">
                                     @foreach ($item['child_nodes'] as $sub)
                                     @php($hasThirdLevel = !empty($sub['child_nodes']))
-                                    <li @class(['dropdown-submenu' => $hasThirdLevel])>
-                                        <a href="{{$sub['item_link']}}" class="dropdown-item text-uppercase d-flex align-items-center gap-2">
+                                    <li @class(['dropdown-submenu' => $hasThirdLevel, 'dropend' => $hasThirdLevel])>
+                                        <a href="{{$sub['item_link']}}"
+                                           @class([
+                                                'dropdown-item text-uppercase d-flex align-items-center gap-2',
+                                                'dropdown-toggle' => $hasThirdLevel,
+                                                'dropdown-toggle-no-caret' => $hasThirdLevel
+                                           ])
+                                           @if ($hasThirdLevel)
+                                               role="button"
+                                               data-bs-toggle="dropdown"
+                                               data-bs-auto-close="outside"
+                                               aria-haspopup="true"
+                                               aria-expanded="false"
+                                           @endif>
                                             <span class="flex-grow-1">{!! $sub['menu_title'] !!}</span>
                                             @if ($hasThirdLevel)
                                             <i class="bi bi-chevron-right small"></i>
