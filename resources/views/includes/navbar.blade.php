@@ -245,20 +245,22 @@
                     @if (count($item['child_nodes']) > 0)
                     <ul class="list-unstyled d-flex flex-column gap-1 mb-2 mt-1">
                         @foreach ($item['child_nodes'] as $sub)
-                        <a href="{{$sub['item_link']}}" class="text-light text-decoration-none fw-semibold d-flex align-items-center justify-content-between gap-2">{!! $sub['menu_title'] !!}
+                        @php($hasThirdLevel = !empty($sub['child_nodes']))
+                        <li>
+                            <a href="{{$sub['item_link']}}" class="text-light text-decoration-none fw-semibold d-flex align-items-center justify-content-between gap-2">{!! $sub['menu_title'] !!}
+                                @if ($hasThirdLevel)
+                                <i class="bi bi-chevron-down small"></i>
+                                @endif
+                            </a>
                             @if ($hasThirdLevel)
-                            <i class="bi bi-chevron-down small"></i>
+                            <ul class="list-unstyled d-flex flex-column gap-1 mt-1 ps-3 border-start border-secondary submenu-list">
+                                @foreach ($sub['child_nodes'] as $third)
+                                <li>
+                                    <a href="{{ $third['item_link'] }}" class="text-light text-decoration-none">{!! $third['menu_title'] !!}</a>
+                                </li>
+                                @endforeach
+                            </ul>
                             @endif
-                        </a>
-                        @if ($hasThirdLevel)
-                        <ul class="list-unstyled d-flex flex-column gap-1 mt-1 ps-3 border-start border-secondary submenu-list">
-                            @foreach ($sub['child_nodes'] as $third)
-                            <li>
-                                <a href="{{ $third['item_link'] }}" class="text-light text-decoration-none">{!! $third['menu_title'] !!}</a>
-                            </li>
-                            @endforeach
-                        </ul>
-                        @endif
                         </li>
                         @endforeach
                     </ul>
