@@ -1,1 +1,0 @@
-{!! Str::replace('TITLE', $title, $element['data']['elemHtml']) !!}

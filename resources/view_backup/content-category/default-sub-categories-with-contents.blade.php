@@ -1,1 +1,0 @@
-KATEGORİLER ve İÇERİKLER
