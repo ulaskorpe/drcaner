@@ -33,9 +33,7 @@ class HomeController extends Controller
     public function contactForm(){
         return view('contact_form');
     }
-    public function contactFormPost(Request $request){
-        return $request->all();
-    }
+
 
     public function index()
     {
@@ -52,7 +50,7 @@ class HomeController extends Controller
         $cacheKey = 'content_' . $content->id . '_relations';
 
         $contentWithRelations = Cache::remember($cacheKey, now()->addHour(), function () use ($content) {
-
+            
             $content->loadMissing(['header_layout', 'library_media', 'slider', 'slider.slides', 'connected_contents']);
 
             return $content;
@@ -181,7 +179,7 @@ class HomeController extends Controller
                         $que->where(function ($qq) {
                             $qq->whereNull('depending_content_id')->orWhereHas('depending_content');
                         });
-
+                        
                     }]);
 
                     return $content;
@@ -347,7 +345,7 @@ class HomeController extends Controller
         }
 
         ResponseCache::forget(url()->previous());
-
+        
         return back()->with('success',$form->success_message);
     }
 

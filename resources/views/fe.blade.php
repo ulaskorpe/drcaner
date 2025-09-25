@@ -74,7 +74,7 @@
 
         @stack('head')
         <style>
-        
+
         .fixed-global {
   position: fixed;
   top: 100px;
@@ -89,7 +89,7 @@
 }
 .sticky-right {
   top: 100px;
-  
+
   z-index: 99;
 }
 .fixed {
@@ -98,9 +98,9 @@
 .absolute {
   position: absolute;
 }
-   
-.custom-box {    
-    
+
+.custom-box {
+
 }
 
 .top-25 {
@@ -198,7 +198,7 @@
 <div class="modal fade" id="contactModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
-    
+
       <div class="modal-body" id="contactModalBody">
         <!-- İçerik buraya yüklenecek -->
         <div class="text-center py-5" id="contactLoading" style="display:none;">
@@ -214,10 +214,10 @@
         <link rel="stylesheet" href="{{ mix('/fe/css/vendors.css') }}">
         <script src="{{ asset('/fe/js/vendors.js') }}" defer></script>
         <script src="{{ asset('/fe/js/main.js') }}" defer></script>
-        
+
         <script
   src="https://code.jquery.com/jquery-3.7.1.min.js"
-  
+
   crossorigin="anonymous"></script>
 
         {!! $settings->scripts['footer'] !!}
@@ -230,31 +230,31 @@
             <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
                     <script type="text/javascript">
  function showModal(){
-    $.get( "https://drcaner.projeweb.site/contact-form", function( data ) {
+    $.get( "http://drcaner.test/contact-form", function( data ) {
   $( "#contactModalBody" ).html( data );
-    
+
 });
 }
                         const sticky = document.querySelector(".custom-box");
  //const scrollBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
-               
+
                    if(window.innerWidth > 1024){
-    
+
                window.addEventListener("scroll", () => {
                    console.log(document.documentElement.scrollHeight);
                  //  console.log(window.innerWidth);
-                   
-                
-                  
+
+
+
                                             if (window.scrollY < 500 || window.scrollY > document.documentElement.scrollHeight - 1200) {
                               sticky.classList.remove("sticky-top" , "sticky-right", "sticky-global");
                             } else {
                               sticky.classList.add("sticky-top" , "sticky-right", "sticky-global");
                             }
-              
-  
+
+
   });
-  
+
                    }else{
                     sticky.classList.remove("sticky-top", "sticky-column", "sticky-right", "sticky-global"); sticky.classList.add("row");
                }
@@ -266,13 +266,13 @@
             //     autoDisplay: false
             //   }, 'google_translate_element');
             }
-            
-            
-             //// 
 
- 
-             
-     
+
+             ////
+
+
+
+
             </script>
 
     </body>

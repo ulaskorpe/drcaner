@@ -38,125 +38,76 @@
     if( app()->getLocale() != config('languages.default') ){
         $logoLink = '/'.app()->getLocale();
     }
-
+    $topBarMenuItems = [];
+    if (session()->has('core_menus')) {
+        $coreMenus = session()->get('core_menus');
+        if (isset($coreMenus['data'][app()->getLocale()]['main']['items'])) {
+            $topBarMenuItems = $coreMenus['data'][app()->getLocale()]['main']['items'];
+        }
+    }
 @endphp
 
 
 @if ($isMobile)
 
-<header @class([$navbarClasses]) id="main-mobile-navbar new-font" >
-    <!-- DIŞ WRAPPER: satır yerine kolon -->
-    <div class="d-flex flex-column w-100 p-2 gap-2" aria-label="Top Navigation">
-      <!-- 1. SATIR: LOGO (aynen kalsın) -->
-      <div class="text-center">
-        <a href="{{$logoLink}}" class="logo d-inline-block"> @if ($logoMobile) <img src="{{ $logoMobile['original_url'] }}" alt="{{ $settings->site_name }}" width="{{ $logoMobile['custom_properties']['width'] }}" height="{{ $logoMobile['custom_properties']['height'] }}"> @elseif ($logo) <img src="{{ $logo['original_url'] }}" alt="{{ $settings->site_name }}" width="{{ $logo['custom_properties']['width'] }}" height="{{ $logo['custom_properties']['height'] }}"> @else <span>{{ $settings->site_name }}</span> @endif </a>
-      </div>
-      <!-- 2. SATIR: SOL TELEFON — SAĞ MENÜ -->
-      <div class="d-flex justify-content-between align-items-center">
-        <!-- Sol: Telefon -->
+<header @class([$navbarClasses]) id="main-mobile-navbar">  <!-- DIŞ WRAPPER: satır yerine kolon -->  <div class="d-flex flex-column w-100 p-2 gap-2" aria-label="Top Navigation">    <!-- 1. SATIR: LOGO (aynen kalsın) -->    <div class="text-center">      <a href="{{$logoLink}}" class="logo d-inline-block">        @if ($logoMobile)          <img src="{{ $logoMobile['original_url'] }}" alt="{{ $settings->site_name }}"               width="{{ $logoMobile['custom_properties']['width'] }}"               height="{{ $logoMobile['custom_properties']['height'] }}">        @elseif ($logo)          <img src="{{ $logo['original_url'] }}" alt="{{ $settings->site_name }}"               width="{{ $logo['custom_properties']['width'] }}"               height="{{ $logo['custom_properties']['height'] }}">        @else          <span>{{ $settings->site_name }}</span>        @endif      </a>    </div>    <!-- 2. SATIR: SOL TELEFON — SAĞ MENÜ -->    <div class="d-flex justify-content-between align-items-center">      <!-- Sol: Telefon -->      <a href="tel:+905415372639" class="phone-btn d-inline-flex align-items-center">        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="me-2" viewBox="0 0 16 16">          <path d="M3.654 1.328a.678.678 0 0 1 .738-.067l2.522 1.26a.678.678 0 0 1 .291.91L6.29 5.255a.678.678 0 0 0 .145.79l3.52 3.52a.678.678 0 0 0 .79.145l1.824-.915a.678.678 0 0 1 .91.29l1.26 2.523a.678.678 0 0 1-.067.738c-.69.987-1.77 1.817-3.095 1.817-3.315 0-7.29-3.975-7.29-7.29 0-1.325.83-2.405 1.817-3.095z"/>        </svg>        +90 541 537 2639      </a>      <!-- Sağ: Menü (mevcut kodun) -->      <div class="d-flex align-items-center">        <button class="btn text-white p-0 align-items-center justify-content-center" type="button"                data-bs-toggle="offcanvas" data-bs-target="#csNavbar" aria-controls="csNavbar" aria-label="Toggle navigation">          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" class="bi" fill="currentColor" viewBox="0 0 16 16">            <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>          </svg>        </button>      </div>    </div>  </div></header><style>#main-mobile-navbar .phone-btn{  background:#3a4853;  color:#fff;  padding:6px 12px;  border-radius:8px;  font-weight:700;  text-decoration:none;  line-height:1.1;}#main-mobile-navbar .phone-btn:hover{opacity:.9;color:#fff;}</style>
 
-
-        @php
-
-        $whatsappPhone = preg_replace('/[^0-9]/', '', $settings->contact['phone']);
-    @endphp
-
-
-    @php
-
-        $mapAddress = urlencode(strip_tags($settings->contact['address']));
-    @endphp
-
-
-        <a href="https://wa.me/{{ $whatsappPhone }}" target="_blank"  class="phone-btn d-inline-flex align-items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="me-2" viewBox="0 0 16 16">
-            <path d="M3.654 1.328a.678.678 0 0 1 .738-.067l2.522 1.26a.678.678 0 0 1 .291.91L6.29 5.255a.678.678 0 0 0 .145.79l3.52 3.52a.678.678 0 0 0 .79.145l1.824-.915a.678.678 0 0 1 .91.29l1.26 2.523a.678.678 0 0 1-.067.738c-.69.987-1.77 1.817-3.095 1.817-3.315 0-7.29-3.975-7.29-7.29 0-1.325.83-2.405 1.817-3.095z" />
-          </svg> {{$settings->contact['address']}}</a>
-        <!-- Sağ: Menü (mevcut kodun) -->
-        <div class="d-flex align-items-center">
-          <button class="btn text-white p-0 align-items-center justify-content-center" type="button" data-bs-toggle="offcanvas" data-bs-target="#csNavbar" aria-controls="csNavbar" aria-label="Toggle navigation">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" class="bi" fill="currentColor" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-            </svg>
-          </button>
-          <div id="google_translate_element"  ></div>
-        </div>
-      </div>
-    </div>
-  </header>
-  <style>
-    #main-mobile-navbar .phone-btn {
-      background: #3a4853;
-      color: #fff;
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-weight: 700;
-      font-family: 'Montserrat'
-      text-decoration: none;
-      line-height: 1.1;
-    }
-
-    #main-mobile-navbar .phone-btn:hover {
-      opacity: .9;
-      color: #fff;
-    }
-  </style>
 @else
 
-    <header class="bg-black new-font"  >
+    <header class="bg-black">
 
         <div class="container py-3 d-none d-lg-block">
             <div class="row row-cols-3 justify-content-between align-items-center">
                 <div class="col d-flex flex-column">
-                    @php
-                        $whatsappPhone = preg_replace('/[^0-9]/', '', $settings->contact['phone']);
-                    @endphp
-                    <a href="https://wa.me/{{ $whatsappPhone }}" target="_blank" class="text-decoration-none">
-                        <span class="lead text-gray-500">{{ $settings->contact['phone'] }}</span>
-                    </a>
-                    @php
-                        $mapAddress = urlencode(strip_tags($settings->contact['address']));
-                    @endphp
-                    <a href="https://www.google.com/maps/search/?api=1&query={{ $mapAddress }}" target="_blank" class="text-decoration-none">
-                        <span class="text-white fs-sm">{!! $settings->contact['address'] !!}</span>
-                    </a>
+                    <span class="lead text-gray-500">{{ $settings->contact['phone'] }}</span>
+                    <span class="text-white fs-sm">{!! $settings->contact['address'] !!}</span>
                 </div>
                 <div class="col">
-                    <a href="/">
                     <img src="/media/2025/6/2/logo-full.png" alt="Dr. Caner Kaçmaz" fetchpriority="high" width="409" height="127" class="img-fluid mx-auto">
-                </a>
                 </div>
+
+
                 <div class="col d-flex flex-column align-items-end gap-3">
-                    <div class="d-flex align-items-center gap-3">
-                        <div class="hstack gap-3 ms-auto">
-                            @if (isset($settings->header_buttons[app()->getLocale()]))
-                            <div class="hstack align-items-center gap-2">
-                                @if ($settings->header_buttons[app()->getLocale()]['button_1']['active'])
-                                <a href="{{$settings->header_buttons[app()->getLocale()]['button_1']['button_link']}}" @class(['btn btn-sm px-3 h-40px d-flex text-nowrap align-items-center fw-semibold',$buttonOneClass]) @if ($settings->header_buttons[app()->getLocale()]['button_1']['new_window']) target="_blank" @endif>
-                                    {!! $settings->header_buttons[app()->getLocale()]['button_1']['button_text'] !!}
-                                </a>
-                                @endif
-                                @if ($settings->header_buttons[app()->getLocale()]['button_2']['active'])
-                                <a href="{{$settings->header_buttons[app()->getLocale()]['button_2']['button_link']}}" @class(['btn btn-sm px-3 h-40px d-flex text-nowrap align-items-center fw-semibold',$buttonTwoClass]) @if ($settings->header_buttons[app()->getLocale()]['button_2']['new_window']) target="_blank" @endif>
-                                    {!! $settings->header_buttons[app()->getLocale()]['button_2']['button_text'] !!}
-                                </a>
-                                @endif
+    <!-- Butonlar -->
+    @if (isset($settings->header_buttons[app()->getLocale()]))
+    <div class="d-flex flex-column gap-2 align-items-end">
+        @if ($settings->header_buttons[app()->getLocale()]['button_1']['active'])
+
+        <button
+  type="button"
+ @class(['btn btn-sm px-3 h-40px d-flex text-nowrap align-items-center fw-semibold', $buttonOneClass])
+  data-bs-toggle="modal"
+  onclick="showModal()"
+  data-bs-target="#contactModal"
+  data-url="{{ route('contact-form') }}"
+>
+
+            {!! $settings->header_buttons[app()->getLocale()]['button_1']['button_text'] !!}
+        </button>
+        @endif
+
+        @if ($settings->header_buttons[app()->getLocale()]['button_2']['active'])
+        <a href="{{$settings->header_buttons[app()->getLocale()]['button_2']['button_link']}}"
+           @class(['btn btn-sm px-3 h-40px d-flex text-nowrap align-items-center fw-semibold', $buttonTwoClass])
+           @if ($settings->header_buttons[app()->getLocale()]['button_2']['new_window']) target="_blank" @endif>
+            {!! $settings->header_buttons[app()->getLocale()]['button_2']['button_text'] !!}
+        </a>
+        @endif
+    </div>
+    @endif
+
+    <!-- Dil seçici -->
+    <div class="d-none d-xl-block rounded bg-opacity-75 bg-dark px-3 py-2">
+        <x-switch-language />
+    </div>
+
+    <!-- Sosyal medya -->
+    <div>
+        <x-social-media-accounts />
+    </div>
+</div>
 
 
-                                <div id="google_translate_element"  ></div>
-
-                            </div>
-                            @endif
-                        </div>
-
-                        @if (true)
-                        <div class="d-none d-xl-block ms-3 rounded bg-opacity-75 bg-dark px-3 py-2">
-                            <x-switch-language />
-                        </div>
-                        @endif
-                    </div>
-                    <x-social-media-accounts />
-                </div>
             </div>
         </div>
 
@@ -197,9 +148,9 @@
                             @foreach (session()->get('core_menus')['data'][app()->getLocale()]['main']['items'] as $item)
                             @if (count($item['child_nodes']) > 0)
                             <li @class(['nav-item dropdown','ktm-mega-menu'=> $item['megamenu']])>
-                                <a href="#" @class([$linkClasses,'dropdown-toggle','new-font']) data-bs-toggle="dropdown" aria-expanded="false">{!! $item['menu_title'] !!}</a>
+                                <a href="#" @class([$linkClasses,'dropdown-toggle']) data-bs-toggle="dropdown" aria-expanded="false">{!! $item['menu_title'] !!}</a>
                                 @if ($item['megamenu'])
-                                <div class="dropdown-menu new-font">
+                                <div class="dropdown-menu>
                                     <div class="bg-white pt-3 pb-5 min-h-500px border-bottom">
                                         <nav class="container large-container">
                                             <ul class="row row-cols-2 row-cols-lg-4 row-cols-xl-5 g-4 list-unstyled ps-0">
@@ -232,10 +183,10 @@
                                     </div>
                                 </div>
                                 @else
-                                <ul class="dropdown-menu new-font">
+                                <ul class="dropdown-menu">
                                     @foreach ($item['child_nodes'] as $sub)
                                     <li>
-                                        <a href="{{$sub['item_link']}}" class="dropdown-item text-uppercase new-font menu-item">{!! $sub['menu_title'] !!} </a>
+                                        <a href="{{$sub['item_link']}}" class="dropdown-item text-uppercase">{!! $sub['menu_title'] !!}</a>
                                     </li>
                                     @endforeach
                                 </ul>
@@ -243,7 +194,7 @@
                             </li>
                             @else
                             <li class="nav-item">
-                                <a href="{{$item['item_link']}}" @class([$linkClasses,'new-font']) >{!! $item['menu_title'] !!}</a>
+                                <a href="{{$item['item_link']}}" @class([$linkClasses])>{!! $item['menu_title'] !!}</a>
                             </li>
                             @endif
 
@@ -280,7 +231,7 @@
                     <ul class="list-unstyled d-flex flex-column gap-1 mb-2 mt-1">
                         @foreach ($item['child_nodes'] as $sub)
                         <li>
-                            <a href="{{$sub['item_link']}}" class="text-light text-decoration-none fw-semibold new-font menu-item">{!! $sub['menu_title'] !!}</a>
+                            <a href="{{$sub['item_link']}}" class="text-light text-decoration-none fw-semibold">{!! $sub['menu_title'] !!}</a>
                         </li>
                         @endforeach
                     </ul>
