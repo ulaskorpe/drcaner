@@ -146,14 +146,14 @@ body {
     --bs-dropdown-link-hover-bg: var(--bs-light);
     --bs-dropdown-link-active-bg: var(--bs-light);
 
-    overflow: hidden;
+    overflow: visible;
     box-shadow: none;
     margin-top: -1px !important;
     top: auto !important;
     //opacity: 0;
 
     li {
-        overflow: hidden;
+        overflow: visible;
     }
 
     .dropdown-item {
@@ -166,6 +166,23 @@ body {
         &:hover,
         &.active {
             background-color: $gray-800;
+        }
+    }
+
+
+    .dropdown-toggle-nested {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &::after {
+            transform: rotate(-90deg);
+        }
+    }
+
+    .submenu {
+        .dropdown-item {
+            padding-left: calc(var(--bs-dropdown-item-padding-x) + 0.75rem);
         }
     }
 }
@@ -216,14 +233,39 @@ body {
 
                 .submenu {
                     display: none;
+                    position: absolute;
                     left: 100%;
                     top: 0;
+                    min-width: 200px;
+                    background-color: $black;
                 }
 
                 &:hover {
                     .submenu {
                         display: block;
                     }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 991.98px) {
+    .cs-navbar {
+        .dropdown-menu {
+            position: static;
+
+            .submenu {
+                position: static;
+                display: block;
+                background-color: transparent;
+                box-shadow: none;
+                margin: .5rem 0 0;
+                padding: 0;
+
+                .dropdown-item {
+                    background-color: transparent;
+                    color: $light;
                 }
             }
         }

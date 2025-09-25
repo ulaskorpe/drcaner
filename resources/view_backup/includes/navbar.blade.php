@@ -38,13 +38,7 @@
     if( app()->getLocale() != config('languages.default') ){
         $logoLink = '/'.app()->getLocale();
     }
-    $topBarMenuItems = [];
-    if (session()->has('core_menus')) {
-        $coreMenus = session()->get('core_menus');
-        if (isset($coreMenus['data'][app()->getLocale()]['main']['items'])) {
-            $topBarMenuItems = $coreMenus['data'][app()->getLocale()]['main']['items'];
-        }
-    }
+
 @endphp
 
 
@@ -65,50 +59,6 @@
                 <div class="col">
                     <img src="/media/2025/6/2/logo-full.png" alt="Dr. Caner Kaçmaz" fetchpriority="high" width="409" height="127" class="img-fluid mx-auto">
                 </div>
-                
-                
-                <div class="col d-flex flex-column align-items-end gap-3">
-    <!-- Butonlar -->
-    @if (isset($settings->header_buttons[app()->getLocale()]))
-    <div class="d-flex flex-column gap-2 align-items-end">
-        @if ($settings->header_buttons[app()->getLocale()]['button_1']['active'])
-        
-        <button
-  type="button"
- @class(['btn btn-sm px-3 h-40px d-flex text-nowrap align-items-center fw-semibold', $buttonOneClass])
-  data-bs-toggle="modal"
-  onclick="showModal()"
-  data-bs-target="#contactModal"
-  data-url="{{ route('contact-form') }}"
->
-         
-            {!! $settings->header_buttons[app()->getLocale()]['button_1']['button_text'] !!}
-        </button>
-        @endif
-
-        @if ($settings->header_buttons[app()->getLocale()]['button_2']['active'])
-        <a href="{{$settings->header_buttons[app()->getLocale()]['button_2']['button_link']}}"
-           @class(['btn btn-sm px-3 h-40px d-flex text-nowrap align-items-center fw-semibold', $buttonTwoClass])
-           @if ($settings->header_buttons[app()->getLocale()]['button_2']['new_window']) target="_blank" @endif>
-            {!! $settings->header_buttons[app()->getLocale()]['button_2']['button_text'] !!}
-        </a>
-        @endif
-    </div>
-    @endif
-
-    <!-- Dil seçici -->
-    <div class="d-none d-xl-block rounded bg-opacity-75 bg-dark px-3 py-2">
-        <x-switch-language />
-    </div>
-
-    <!-- Sosyal medya -->
-    <div>
-        <x-social-media-accounts />
-    </div>
-</div>
-
-@if(false)
-                
                 <div class="col d-flex flex-column align-items-end gap-3">
                     <div class="d-flex align-items-center gap-3">
                         <div class="hstack gap-3 ms-auto">   
@@ -128,7 +78,7 @@
                             @endif
                         </div>
 
-                        @if (true)
+                        @if (config('languages.language_bar'))
                         <div class="d-none d-xl-block ms-3 rounded bg-opacity-75 bg-dark px-3 py-2">
                             <x-switch-language />
                         </div>
@@ -136,7 +86,6 @@
                     </div>
                     <x-social-media-accounts />
                 </div>
-                @endif
             </div>
         </div>
 
