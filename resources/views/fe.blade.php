@@ -144,7 +144,43 @@
             .goog-te-gadget-simple .goog-te-menu-value img {
                background-image: none !important;
             }
+            #main-navbar .dropdown-menu .dropdown-submenu {
+        position: relative;
+    }
 
+    #main-navbar .dropdown-menu .dropdown-submenu > .dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-left: .25rem;
+        min-width: 12rem;
+        position: absolute;
+        display: none;
+    }
+
+    #main-navbar .dropdown-menu .dropdown-submenu:hover > .dropdown-menu,
+    #main-navbar .dropdown-menu .dropdown-submenu:focus-within > .dropdown-menu {
+        display: block;
+    }
+
+    #main-navbar .dropdown-menu .dropdown-submenu > a {
+        white-space: normal;
+    }
+
+    #csNavbar .submenu-list a {
+        font-size: .95rem;
+        color: #d1d5db;
+    }
+
+    #csNavbar .submenu-list a:hover {
+        color: #ffffff;
+    }
+
+    @media (max-width: 1199.98px) {
+        #main-navbar .dropdown-menu .dropdown-submenu > .dropdown-menu {
+            position: static;
+            margin-left: 0;
+        }
+    }
           </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
